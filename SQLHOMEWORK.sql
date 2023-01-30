@@ -1,8 +1,4 @@
-
-[B[A[A
-
-[A[A
-[Aselect model,speed,hd from PC where price <500
+select model,speed,hd from PC where price <500
 
 select maker from product where type = 'Printer' group by maker
 
