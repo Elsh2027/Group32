@@ -1,0 +1,88 @@
+
+
+id serial PRIMARY KEY,
+role_title varchar(30) UNIQUE NOT NULL
+)
+
+CREATE TABLE roles_salary (
+id serial PRIMARY KEY,
+id_role_int NOT NULL,
+id_salary int NOT NULL,
+FOREIGN KEY (id_role)
+REFERENCES roles(id),
+FOREIGN KEY (id_salary)
+REFERENCES salary(id)
+);
+
+INSERT INTO roles_salary(id_roles,id_salary)
+VALUES (1,1)
+(2,3)
+(3,7)
+(4,1)
+(5,5)
+(6,8);
+
+INSERT INTO salary(id,monthly_salary)        
+values(DEFAULT,500),
+(700),
+(900),
+(1000),
+(1200),
+(1400),
+(1500),
+(1700),
+(2000);
+
+INSERT INTO salary(monthly_salary)
+values(500),
+(700),
+(900),
+(1000),
+(1200),
+(1400),
+(1500),
+(1700),
+(2000);
+
+insert into roles(role_title)
+values ('QA_manual_junior'),
+    ('QA_manual_middle'),
+    ('QA_manual_senior'),
+    ('QA_automation_junior'),
+    ('QA_automation_middle'),
+    ('QA_automation_senior'),
+    ('Java_developer_junior'),
+    ('Java_developer_middle'),
+    ('Java_developer_senior'),
+    ('CEO'),
+    ('CTO'),
+    ('HR'),
+    ('Manager'),
+    ('Designer');
+    
+   
+   SELECT * FROM roles_salary;
+   
+    SELECT role_title, monthly_salary FROM roles_salary
+    JOIN salary ON id_salary=salary.id
+    JOIN roles ON id_role=roles.id
+   
+       SELECT role_title, monthly_salary FROM roles_salary
+     RIGHT JOIN roles ON id_role=roles.id  
+     RIGHT JOIN salary ON id_salary=salary.id 
+   
+   
+   ALTER TABLE roles 
+   ADD COLUMN parking int;
+  
+  ALTER TABLE roles
+  RENAME COLUMN parking TO taxi;
+ 
+ ALTER TABLE roles
+ DROP COLUMN taxi;
+
+UPDATE salary 
+SET monthly_salary=1600
+WHERE id=7;
+
+
